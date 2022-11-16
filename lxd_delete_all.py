@@ -127,11 +127,11 @@ class LxdCleaner:
             # Create empty list to store LXC Container names
             containers = []
             for container in data:
-                containers.append((container["name"], container["state"]))
+                containers.append((container["name"], container["status"]))
 
             # Run LXD Delete command for each container
             for container in containers:
-                if container[1] == 'running':
+                if container[1] == 'Running':
                     # More gracefull, to stop first and delete afterwards
                     subprocess.run([
                         "/snap/bin/lxc",
